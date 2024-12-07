@@ -119,7 +119,7 @@ const ImageGrid: React.FC = () => {
       }
 
       // Send the FormData to the API endpoint
-      const res = await fetch("http://172.31.2.44:5000/predict", {
+      const res = await fetch("https://127.31.2.44:5000/predict", {
         method: "POST",
         body: formData, // Don't set headers; fetch sets correct Content-Type for FormData
       });
