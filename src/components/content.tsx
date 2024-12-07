@@ -141,6 +141,7 @@ const ImageGrid: React.FC = () => {
             console.log("API Response: ", result);
 
             const diagnosis = roundedPrediction < 0.5 ? "No Tumor" : "Tumor";
+            console.log("");
 
             // Calculate confidence percentage (absolute value)
             const confidence = Math.abs(roundedPrediction - 0.5) * 2 * 100;
@@ -180,16 +181,42 @@ const ImageGrid: React.FC = () => {
 
                         {/* Back Side */}
                         <div style={{ ...styles.face, ...styles.back }}>
-                            <div style={styles.result}>
-                                Prediction:{" "}
-                                {delayedResultIndex === index ? response : ""}
-                                <br />
-                                Confidence:{" "}
-                                {delayedResultIndex === index ? confidence : ""}
-                                <br />
-                                Actual:{" "}
-                                {delayedResultIndex === index ? response : ""}
-                            </div>
+                            {delayedResultIndex === index && (
+                                <div style={styles.result}>
+                                    <span>
+                                        Prediction:{" "}
+                                        <span
+                                            style={{
+                                                color:
+                                                    response &&
+                                                    response.toLowerCase() ===
+                                                        "tumor"
+                                                        ? "red"
+                                                        : "green",
+                                            }}
+                                        >
+                                            {response}
+                                        </span>
+                                    </span>
+                                    <br />
+                                    Confidence: {confidence}
+                                    <br />
+                                    <span>
+                                        Actual:{" "}
+                                        <span
+                                            style={{
+                                                color: path.includes("Not")
+                                                    ? "green"
+                                                    : "red",
+                                            }}
+                                        >
+                                            {path.includes("Not")
+                                                ? "No Tumor"
+                                                : "Tumor"}
+                                        </span>
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 ))}
