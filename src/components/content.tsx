@@ -205,14 +205,11 @@ const ImageGrid: React.FC = () => {
                                         Actual:{" "}
                                         <span
                                             style={{
-                                                color: path.includes("Not")
-                                                    ? "green"
-                                                    : "red",
+                                                color:
+                                                    index > 6 ? "green" : "red",
                                             }}
                                         >
-                                            {path.includes("Not")
-                                                ? "No Tumor"
-                                                : "Tumor"}
+                                            {index > 6 ? "No Tumor" : "Tumor"}
                                         </span>
                                     </span>
                                 </div>
