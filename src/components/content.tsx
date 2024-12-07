@@ -206,10 +206,10 @@ const ImageGrid: React.FC = () => {
                                         <span
                                             style={{
                                                 color:
-                                                    index > 6 ? "green" : "red",
+                                                    index > 4 ? "green" : "red",
                                             }}
                                         >
-                                            {index > 6 ? "No Tumor" : "Tumor"}
+                                            {index > 4 ? "No Tumor" : "Tumor"}
                                         </span>
                                     </span>
                                 </div>
